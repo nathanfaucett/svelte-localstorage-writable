@@ -1,6 +1,6 @@
 {
   "name": "svelte-localstorage-writable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "svelte localstorage writable store",
   "repository": {
     "type": "git",
@@ -21,12 +21,8 @@
     "clean": "rm -rf esm cjs browser types",
     "lint": "eslint . --fix",
     "prettier": "prettier --ignore-path .eslintignore --ignore-unknown --write .",
-    "preCommit": "npm run prettier && npm run lint && npm run coverage"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run preCommit"
-    }
+    "preCommit": "npm run prettier && npm run lint && npm run coverage",
+    "prepare": "husky install"
   },
   "keywords": [
     "svelte",
@@ -38,18 +34,18 @@
   "license": "(MIT OR Apache-2.0)",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "22",
-    "@rollup/plugin-node-resolve": "13",
-    "@rollup/plugin-typescript": "8",
-    "@types/jsdom": "16",
+    "@rollup/plugin-commonjs": "24",
+    "@rollup/plugin-node-resolve": "15",
+    "@rollup/plugin-typescript": "11",
+    "@types/jsdom": "21",
     "@types/tape": "4",
     "@typescript-eslint/eslint-plugin": "5",
     "@typescript-eslint/parser": "5",
     "eslint": "8",
     "eslint-config-prettier": "8",
     "eslint-plugin-prettier": "4",
-    "husky": "4",
-    "jsdom": "19",
+    "husky": "8",
+    "jsdom": "21",
     "nyc": "15",
     "prettier": "2",
     "rollup-plugin-esm-import-to-url": "2",
@@ -61,7 +57,7 @@
     "ts-node": "10",
     "tslib": "2",
     "typedoc": "0",
-    "typescript": "4"
+    "typescript": "5"
   },
   "peerDependencies": {
     "svelte": "3",

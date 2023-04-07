@@ -1,5 +1,5 @@
 import {
-  writable as internalWritable,
+  writable as svelteWritable,
   get,
   type Writable,
   Updater,
@@ -41,11 +41,13 @@ export function localstorageWritable<T>(
   }
 
   if (!stores[key]) {
-    const store = internalWritable<T>(initialValue, (set) => {
+    const store = svelteWritable<T>(initialValue, (set) => {
       const json = browser ? window.localStorage.getItem(key) : null;
 
       if (json) {
         set(fromJSON(JSON.parse(json)));
+      } else {
+        updateStorage(key, initialValue);
       }
 
       if (browser) {
