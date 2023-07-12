@@ -19,6 +19,7 @@ export type IFromJSON<T> = (json: any) => T;
 export type IToJSON<T> = (value: T) => any;
 
 export interface ILocalStorageWritableOptions<T> {
+  setInitial?: boolean;
   fromJSON?: IFromJSON<T>;
   toJSON?: IToJSON<T>;
 }
@@ -32,6 +33,7 @@ export function localstorageWritable<T>(
     typeof window !== "undefined" && typeof window.localStorage !== "undefined";
   const toJSON = options.toJSON || defaultToJSON;
   const fromJSON = options.fromJSON || defaultFromJSON;
+  const setInitial = options.setInitial || true;
 
   function updateStorage(key: string, value: T) {
     if (browser) {
@@ -47,7 +49,9 @@ export function localstorageWritable<T>(
       if (json) {
         set(fromJSON(JSON.parse(json)));
       } else {
-        updateStorage(key, initialValue);
+        if (setInitial) {
+          updateStorage(key, initialValue);
+        }
       }
 
       if (browser) {
