@@ -27,7 +27,7 @@ export interface ILocalStorageWritableOptions<T> {
 export function localstorageWritable<T>(
   key: string,
   initialValue: T,
-  options: ILocalStorageWritableOptions<T> = {}
+  options: ILocalStorageWritableOptions<T> = {},
 ): Writable<T> {
   const browser =
     typeof window !== "undefined" && typeof window.localStorage !== "undefined";
@@ -60,7 +60,7 @@ export function localstorageWritable<T>(
             set(
               event.newValue
                 ? fromJSON(JSON.parse(event.newValue))
-                : (null as unknown as T)
+                : (null as unknown as T),
             );
           }
         }

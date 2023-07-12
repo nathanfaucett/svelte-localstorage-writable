@@ -241,7 +241,7 @@ tape("uses to/from JSON to convert value before setting", (asset) => {
   const store = writable<Entity>(
     "myKey11",
     { date: new Date("2020-01-01") },
-    { fromJSON, toJSON }
+    { fromJSON, toJSON },
   );
 
   const initial = get(store);
